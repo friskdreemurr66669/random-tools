@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfc6gxklil612"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_ok4ge"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ok4ge")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 51.0
+offset_bottom = -323.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 374.0
+grow_horizontal = 2
+grow_vertical = 2
+editable = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 35
+text = "input"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_top = 324.0
+offset_right = 90.0
+offset_bottom = 373.0
+theme_override_font_sizes/font_size = 35
+text = "output"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1042.0
+offset_top = 3.0
+offset_bottom = -601.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 26
+text = "import"
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 911.0
+offset_top = 3.0
+offset_right = -131.0
+offset_bottom = -601.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "print map"
+
+[node name="open" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Open a File"
+initial_position = 1
+size = Vector2i(1038, 540)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json")
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+title = "error"
+initial_position = 1
+size = Vector2i(780, 445)
+dialog_text = "import failed, file empty"
+
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="file_selected" from="open" to="." method="_on_open_file_selected"]
